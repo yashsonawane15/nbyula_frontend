@@ -1,0 +1,13 @@
+.header {
+    background-color: black;
+    height: 120px;
+}
+
+.logo {
+    float: left;
+    background-color: black;
+    height: 95px;
+    width: 95px;
+    padding: 10px;
+    padding-top: 15px;;
+}
