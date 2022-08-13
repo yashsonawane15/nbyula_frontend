@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardHeader, CardContent, Typography, Button } from "@material-ui/core";
+import { Card, CardHeader, CardContent, Typography, Button, ButtonBase } from "@material-ui/core";
 
 const JobListingCard = ({ jobListing, applyToJob }) => {
 
@@ -7,7 +7,7 @@ const JobListingCard = ({ jobListing, applyToJob }) => {
     const [color, setColor] = useState("green");
 
     useEffect( () => {
-        
+
     }, [jobListing])
 
     return  (

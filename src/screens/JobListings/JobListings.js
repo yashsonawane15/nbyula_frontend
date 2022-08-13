@@ -69,9 +69,11 @@ const JobListings = () => {
                         </Grid>
                         {
                             jobListings.map( (jobListing) => (
+                                
                                 <Grid item key={jobListing.id}>
                                     <JobListingCard jobListing={jobListing}  rerender={getJobListings} applyToJob={applyToJob} />
                                 </Grid>
+                                
                             ) )
                         }
                 </Grid>

@@ -1,10 +1,10 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useHistory } from "react";
 import { Container, Grid, Typography, AppBar, Button, ButtonGroup } from "@material-ui/core";
 import { useEffect } from "react";
 import { useReducer } from "react";
 import actions from "../../store/authStore.js";
 import { useSelector, useDispatch } from "react-redux";
-import AppliedJobCard from "./AppliedJobCard";
+import AppliedJobCard from "./PostedJobCard";
 
 
 const ApplicantDashboard = () => {
@@ -12,7 +12,7 @@ const ApplicantDashboard = () => {
 
     // const token = useSelector( (state) => state.authStore.token);
     // const id = useSelector( (state) => state.auth.id);
-
+    // const history = useHistory();
     const [appliedJobs, setAppliedJobs] = useState([]);
 
     const getAppliedJobs = () => {
@@ -34,23 +34,32 @@ const ApplicantDashboard = () => {
         setAppliedJobs(jobs);
     }
 
+    const viewApplications = () => {
+        // history.push("/applications")
+        console.log("View applications")
+    }
+    const closeJobListing = () => {
+        console.log("Close job")
+    }
+
     useEffect( () => {
         getAppliedJobs()
     }, []);
 
-    console.log(appliedJobs);
     return (
         <Fragment>
             <AppBar position="relative" color="secondary">
                 <Grid align="right">
                     <ButtonGroup>
+                        <Button>Create job</Button>
+                        <Button>Archived jobs</Button>
                         <Button>View jobs</Button>
                         <Button>Logout</Button>
                     </ButtonGroup>
                 </Grid>
             </AppBar>
 
-            <Container maxWidth="lg" padding="100px">
+            <Container maxWidth="lg" padding="100px" elevation={10}>
                 <Grid container direction="column" spacing={3} >
                     <Grid item>
                         <Typography variant="h3" align="left" gutterBottom>
@@ -60,7 +69,11 @@ const ApplicantDashboard = () => {
                     {
                         appliedJobs.map( (appliedJob) => (
                             <Grid item key={appliedJob.id}>
-                                <AppliedJobCard job={appliedJob} />
+                                <AppliedJobCard 
+                                    jobListing={appliedJob} 
+                                    viewApplications={viewApplications}
+                                    closeJobListing={closeJobListing}
+                                />
                             </Grid>
                         ) )
                     }
